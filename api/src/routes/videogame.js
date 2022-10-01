@@ -12,18 +12,18 @@ const router = Router();
 
 
 router.post('/', async (req, res)=>{
-    const { name, released,description, rating, platforms, image, genres,createdInDb} = req.body
+    const { id, name, released,description, rating, platforms, image, genres,createdInDb} = req.body
 
   if(!name || !description || !platforms) res.status(400).json({msg : 'Faltan datos'});
   try {
     const gameCreate = await Videogame.create({
-        name, description,released , rating, platforms, image,createdInDb
+       id, name, description,released , rating, platforms, image,createdInDb
     });
     const genreDb =await Genre.findAll({
         where:{name: Genre}
     })
     gameCreate.addGenre(genreDb)
-    res.send('Videogame creado con éxito')
+    res.json('Videogame creado con éxito')
   } catch (error) {
     res.send(error)
   }
