@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 import { Fragment } from "react";
 import Paginado from "./Paginado";
+import s from "../styles/home.module.css"
+import Loading from "./Loading";
+
 
 import { filterVideogamesByGenres,
 filterCreated, 
@@ -56,17 +59,20 @@ export default function Home (){
     }
 
     return (
-        <div>
-            <Link to ='/videogame'> Crear Videogame</Link>
-            <h1>VIDEOGAMES</h1>
+        <div className={s.containerHome}>
+            <div className={s.nav}>
+               <h1>VIDEOGAMES</h1>
+            <Link to ='/videogame'  className={s.link}> Create Videogame</Link>
             <SearchBar/>
             <button onClick={e=>{handleClick(e)}}>
-                Volver a cargar todos los videogames
+            Reload
             </button>
-            <div>
+           
+            </div>
+            <div className={s.sel}>
                 <select onChange={e=>handleSort(e)}>
-                    <option value ='asc'>Ascendente</option>
-                    <option value ='desc'>Descendente</option>
+                    <option value ='asc'>A-Z</option>
+                    <option value ='desc'>Z-A</option>
                 </select>
                 <select onChange={e=>handleFilterGenres(e)}> 
                     <option value="All">Todos</option>
@@ -96,29 +102,40 @@ export default function Home (){
                     <option value="Existentes">Existentes</option>
                     <option value="Creados">Creados</option>
                 </select>
+           
+            </div>
+            {allVideogames.length?
+            <div>
+               <div className={s.pag}>
+               <Paginado
+                videogamesPerPage={videogamesPerPage}
+                allVideogames={allVideogames.length}
+                paginado={paginado}
+                />  
+            </div>
+           
 
-
-                <div>
+                <div className={s.allCards}>
                     {
                     currentVideogames?.map( (c)=>{
                         return ( <Fragment>
                             <Link to={"/videogames/" + c.id}>
-                            <Card name={c.name} image={c.image} genres={c.genres} key={c.id}/> 
+                            <Card name={c.name} image={c.image} genres={c.genres} rating={c.rating} key={c.id}/> 
                             </Link>
                            
                         </Fragment>)
                      })
                 }
-                </div>
-              
-                <Paginado
-                videogamesPerPage={videogamesPerPage}
-                allVideogames={allVideogames.length}
-                paginado={paginado}
-                />
-
-
+                </div> 
+            </div> : <div>
+                <Loading></Loading>
             </div>
+            
+              
+              
+
+
+}
         </div>
     )
 

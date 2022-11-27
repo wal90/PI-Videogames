@@ -82,9 +82,55 @@ const getDbInfo = async ()=>{
 const getAllVideogames = async () =>{
     const apiInfo = await getAllApiInfo()
     const dbInfo = await getDbInfo()
-    const infoTotal = apiInfo.concat(dbInfo)
+    const infoTotal = dbInfo.concat(apiInfo)
     return infoTotal
 }
+
+
+const getVideogameId = async (id) =>{
+    try {
+        const gameApi= await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`);
+
+        if(gameApi){
+          return {
+             name: gameApi.data.name,
+             description: gameApi.data.description.replace(/(<([^>]+)>)/gi, ""),
+             released: gameApi.data.released,
+             rating: gameApi.data.rating,
+             platforms: gameApi.data.platforms.map(p=> p.platform.name),
+             image: gameApi.data.background_image,
+             genres: gameApi.data.genres. map (g=> g.name)
+         }  
+        }
+
+    
+      
+    } catch (error) {
+        return res.status(404).json({error: `No se encontró el videogame con id: ${id}`})
+    }
+}
+
+const getDbId = async (id)=>{
+   
+   try {
+    return await Videogame.findByPk(id,{
+     include:[
+         {
+             model:Genre,
+             attributes: ["name"],
+             through:{
+                 attributes:[]
+             }
+         }
+     ]
+    }) 
+ } catch (error) {
+     return ({error : "Id not found"}) 
+ }
+
+}
+
+
 
 
 
@@ -93,5 +139,8 @@ module.exports = {
     getApiInfoNext,
     getAllApiInfo,
     getDbInfo,
-    getAllVideogames
+    getAllVideogames,
+    getVideogameId,
+    getDbId, 
+
 }

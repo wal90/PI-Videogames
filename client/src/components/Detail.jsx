@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../actions";
 import { useEffect } from "react";
+import s from "../styles/detail.module.css"
+import Loading from "./Loading";
 
 export default function Detail (props){
     const dispatch = useDispatch()
@@ -17,38 +19,52 @@ export default function Detail (props){
 
     return(
         <div>
+           
             {
-                myVideogame.length > 0 ?
+                myVideogame.hasOwnProperty("name") ?
                 // <div>
                 //     <h1>{myVideogame.name}</h1>
                 //     <h5>{myVideogame.released}</h5>
 
                 // </div> : <p>Loading...</p>
 
-<div key={myVideogame[0].id}>
-<img src={myVideogame[0].image} alt="File Not Found" width="300px" hight="300px"/>
-<div key={myVideogame[0].id}>
-    <h1>{myVideogame[0].name}</h1>
-    <p><strong>Fecha de lanzamiento: </strong>{myVideogame[0].released}</p>
-    <div ><strong>Rating: </strong><p>{myVideogame[0].rating}</p></div>
-    <div><strong>Plataformas: </strong>{myVideogame[0].platforms?.map(e => <div key={e}>{e + " "}</div>)}</div>
-    <p><strong>Generos: </strong>{myVideogame[0].genres?.map(e => e ).join(", ")}</p>
-    <div><strong>Descripción: </strong><p> {myVideogame[0].description_raw}</p></div>
+<div className={s.containD} key={myVideogame.id}>
+<div className={s.containImage}>
+    <img src={myVideogame.image} alt="File Not Found" width="100%" />
 </div>
 
+<div className={s.details} key={myVideogame.id}>
+    <h1>{myVideogame.name}</h1>
+<div className={s.data}>
+   <div className={s.dataOne} >
+         <p><strong>· Released </strong>{myVideogame.released}</p>
+         <div><strong>· Platforms </strong>{myVideogame.platforms?.map(e => <div key={e}>{e + " "}</div>)}</div>
+      </div> 
+
+    <div className={s.dataTwo}>
+         <p><strong>· Rating </strong>{myVideogame.rating}</p>
+        
+        <div><strong>· Genres </strong>{myVideogame.genres?.map(e => <div key={e}>{e + " "}</div>)}</div>
+    </div>
+
 </div>
-: <p >Loading...</p>
+   
+    <div className={s.des} >
+        <strong>· DESCRIPTION </strong><p> {myVideogame.description}</p>
+    </div> 
+    
+</div>
 
 
+                 <div>
+                    <Link to='/home' className={s.link}>
+                    <button>Back</button>
+                    </Link>
+                </div>
+                </div>
+                : <Loading></Loading>
 
-
-
-
-
-             }   
-                <Link to='/home'>
-                <button>Volver</button>
-                </Link>
+             } 
            
         </div>
     )

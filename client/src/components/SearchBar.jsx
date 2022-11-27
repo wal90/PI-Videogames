@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getNameVideogames } from "../actions";
+import s from "../styles/searchBar.module.css"
 
 export default function SearchBar(){
     const dispatch = useDispatch()
@@ -23,10 +24,10 @@ export default function SearchBar(){
         <div>
             <input
             type='text'
-            placeholder='Ingresar nombre del videogame...'
+            placeholder='   Search videogame...'
             onChange={(e)=>handleInputChange(e)}
             />
-            <button type='submit' onClick={(e)=> handleSubmit(e)}>Buscar</button>
+            <button type='submit' onClick={(e)=> handleSubmit(e)}>Search</button>
         </div>
     )
 }

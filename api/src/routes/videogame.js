@@ -3,7 +3,7 @@ const { Router } = require('express');
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const axios = require('axios')
+
 const { Videogame, Genre} = require('../db.js')
 const { API_KEY  } = process.env;
 
@@ -20,7 +20,7 @@ router.post('/', async (req, res)=>{
        id, name, description,released , rating, platforms, image,createdInDb
     });
     const genreDb =await Genre.findAll({
-        where:{name: Genre}
+        where:{name: genres}
     })
     gameCreate.addGenre(genreDb)
     res.json('Videogame creado con éxito')

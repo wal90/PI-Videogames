@@ -1,0 +1,113 @@
+.container{ 
+        /* background-image: linear-gradient(45deg, #ffae00 50%, rgb(255, 255, 255) 50%); */
+        /* background-color: #030b17; */
+        bottom:0;
+        left:-50%;
+        position:fixed;
+        right:-50%;
+        top:0;
+        text-decoration: none;
+        background: linear-gradient(to bottom right, #05153f, #181818)
+
+    
+        /* z-index:-100;  */
+        
+    }
+
+
+    .contain{
+        background-image: url(../img_landing.png);
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        position: absolute;
+         height: 100%;
+        width: 100%;   
+        top: 0;
+        left: 0;
+    }
+
+
+    .text{
+
+      
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+    }
+
+
+
+
+
+.contain h1{
+    font-family: 'Zen Dots';
+    color: #ffffff;
+    font-size: 80px;
+    /* text-align: center; */
+    letter-spacing: 25px;
+  line-height: 0;
+    /* position: relative; */
+    /* justify-content: center; */
+    /* width: 100%; */
+    /* align-items: center; */
+    /* text-shadow: 0 0 80px rgb(2, 225, 255); */
+     text-shadow: 9px 9px 9px #161616; 
+    
+ 
+}
+
+.contain .text p{
+    font-family: 'Abel';
+     margin-top: 120px;  
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 2px 3px #161616;
+    letter-spacing: 9px;
+    line-height: 0px;
+ 
+
+
+    
+   
+
+}
+
+
+
+.btn button {
+  margin-top: 60px;
+  font-family: 'Abel';
+  width: 9em;
+  height: 3em;
+  border-radius: 30em;
+  font-size: 15px;
+  letter-spacing: 2px;
+ font-weight: 700;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 6px 6px 12px #c5c5c5,
+              -6px -6px 12px #ffffff;
+ }
+ 
+.btn button::before {
+  content: '';
+  width: 0;
+  height: 3em;
+  border-radius: 30em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #6ef089 0%, #0efee5 100%);
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+ }
+ 
+.btn button:hover::before {
+  width: 9em;
+ }

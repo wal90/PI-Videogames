@@ -1,0 +1,122 @@
+.containD{
+    width: 950px;
+    height: 580px;
+    border: 0;
+    color: white;
+    padding: 20px;
+
+    z-index: 1000;
+   /* position: absolute; */
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(38, 38, 38, 0.227);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+  border: 1px solid rgba(250, 250, 250, 0.5);
+  border-right: 1px solid rgba(25,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+
+  backdrop-filter: blur(60px);
+ font-family: 'Abel';
+ 
+}
+
+.containImage img{
+    object-fit: cover;
+    height: 580px;
+    width: 300px;
+    float: left;
+  
+}
+
+.details{
+/* position: absolute; */
+float: right;
+width: 630px;
+text-align: justify;
+/* float: right; */
+ margin-left: 10px;
+
+
+
+}
+
+.details h1{
+    color: #0efee6;
+    font-family: 'Zen Dots';
+    text-transform: uppercase;
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-top: 0px;
+    text-align: left;
+}
+
+.data{
+    margin-top: 5px;
+    display: flex;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Abel';
+    font-size: 12px;
+    width: 580px;
+    
+
+}
+
+.dataOne{
+    width: 50%;
+
+
+}
+
+.dataTwo{
+width: 50%;
+padding-left: 20px;
+border-left: 1px solid #0efee6;
+}
+
+.des{
+    margin-top: 20px;
+    font-family: 'Abel';
+    font-size: 13px; 
+    letter-spacing: 1px;
+}
+
+  
+   .link button {
+     margin: 20px 0;
+    font-family: 'Abel';
+    width: 10em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 12px;
+    letter-spacing: 2px;
+   font-weight: 700;
+   text-transform: uppercase;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    /* box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff; */
+   }
+   
+  .link button::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #6ef089 0%, #0efee5 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+  .link button:hover::before {
+    width: 15em;
+   }
+  

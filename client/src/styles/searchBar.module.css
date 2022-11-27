@@ -1,0 +1,32 @@
+input {
+    font-family: 'Abel';
+    width: 15em;
+    background-color: #f4f2f2;
+    border: none;
+    color: #646464;
+    /* padding: 0.7rem 1rem; */
+    border-radius: 30px;
+    height: 1.8em;
+    transition: all ease-in-out .5s;
+    margin-right: 0.7rem; 
+    font-size: 15px;
+
+
+  }
+
+
+  
+  input:hover, input:focus {
+    box-shadow: 0 0 1em #00000013;
+  }
+  
+input:focus {
+    outline: none;
+    background-color: #f0eeee;
+  }
+  
+input::-webkit-input-placeholder {
+    font-weight: 100;
+    color: #ccc;
+    margin-top: 1rem;
+  }
