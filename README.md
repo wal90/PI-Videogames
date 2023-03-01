@@ -1,4 +1,5 @@
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
+![1](https://user-images.githubusercontent.com/71738691/222215404-c542733e-e8ce-4fe4-8ca7-0d3f77399cdb.png)
 
 
 # Individual Project - Henry Videogames
@@ -7,9 +8,7 @@
   <img height="200" src="./videogame.png" />
 </p>
 
-<p align="center">
-  <img height="200" src="./1.png" />
-</p>
+
 
 ## Objetivos del Proyecto
 
