@@ -55,6 +55,27 @@
 
 
 
+// const getDbInfo = async (name)=>{
+//     return await Videogame.findAll({
+//         where: {
+//          name : {
+//          [Op.iLike]: "%" + name +"%"
+//             }
+//     },
+//     attributes: ["name"],
+//         include: [
+//          {
+//          model: Genre,
+//             attributes: ["name"],
+//             through: {
+//             attributes: []
+//             }
+//          }
+//         ]       
+//     });
+// };
+
+
 
 // const getById = async (id)=>{
     

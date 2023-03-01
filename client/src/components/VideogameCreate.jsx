@@ -70,7 +70,7 @@ export default function VideogameCreate(){
             name:"",
             description:"",
             released: "",
-            rating: "",
+            rating: 0,
             image:"",
             plataforms:[],
             genres: []
@@ -171,7 +171,7 @@ export default function VideogameCreate(){
                     value={input.rating}
                     min="0"
                      max="5" 
-                     step="0.1"
+                     step="0.01"
                     name= 'rating'
                     onChange={(e)=>handleChange(e)} 
                      />
@@ -198,13 +198,13 @@ export default function VideogameCreate(){
                     <select onChange ={(e)=>handleSelect(e)}>
                      
                         {genres.map((g) => (
-                         <option key={g.name} value={g.name}>{g.name}</option>
+                         <option key={g.id} value={g.name}>{g.name}</option>
                          ))} 
                      </select>
                      
                      {input.genres.map(el =>
-                        <div className={s.type}>
-                            <p>{el}</p> <button type="button" onClick={()=>handleDelete(el)}>x</button> 
+                        <div key={el.toString()} className={s.type}>
+                            <p>{el}</p> <button  type="button" onClick={()=>handleDelete(el)}>x</button> 
                         </div>  
                       )}
             </div>

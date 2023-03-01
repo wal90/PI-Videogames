@@ -34,7 +34,8 @@ function rootReducer (state = initialState, action){
 
             case 'FILTER_BY_GENRE':
                 const allVideogames = state.allVideogames;
-                const genreFiltered = action.payload === "All" ? allVideogames : allVideogames.filter(e => e.genres?.includes(action.payload))
+                const genreFiltered = action.payload === "All" ? allVideogames : 
+                allVideogames.filter(e=>e.genres.find(e=> e.name == action.payload))
                 if(genreFiltered.length === 0) {
                     alert("El genero no pertenece a ningun juego");
                 }
@@ -75,6 +76,31 @@ function rootReducer (state = initialState, action){
                         ...state,
                         videogames: sortedArr
                     }
+
+             case 'ORDER_BY_RATING':
+                let sortedRan = action.payload === 'less' ?
+                    state.videogames.sort(function(a,b){
+                        if(a.rating > b.rating){
+                            return 1
+                        }
+                        if(b.rating > a.rating){
+                            return -1
+                        }
+                            return 0
+                        }) :
+                    state.videogames.sort(function(a,b){
+                        if(a.rating > b.rating){
+                            return -1
+                        }
+                        if(b.rating > a.rating){
+                            return 1
+                        }
+                            return 0
+                        })
+                        return {
+                        ...state,
+                        videogames: sortedRan
+                            }       
 
             case 'GET_DETAILS':
                 return {

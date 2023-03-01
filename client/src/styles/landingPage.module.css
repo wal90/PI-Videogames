@@ -7,7 +7,7 @@
         right:-50%;
         top:0;
         text-decoration: none;
-        background: linear-gradient(to bottom right, #05153f, #181818)
+        /* background: linear-gradient(to bottom right, #05153f, #181818) */
 
     
         /* z-index:-100;  */
@@ -25,6 +25,18 @@
         width: 100%;   
         top: 0;
         left: 0;
+    }
+
+    .containTwo{
+      background-image: url(../landingfinal.png);
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      position: absolute;
+       height: 100%;
+      width: 100%;   
+      top: 0;
+      left: 0;
     }
 
 
@@ -45,7 +57,7 @@
 .contain h1{
     font-family: 'Zen Dots';
     color: #ffffff;
-    font-size: 80px;
+    font-size: 90px;
     /* text-align: center; */
     letter-spacing: 25px;
   line-height: 0;
@@ -61,7 +73,7 @@
 
 .contain .text p{
     font-family: 'Abel';
-     margin-top: 120px;  
+     margin-top: 0px;  
     font-size: 20px;
     color: white;
     text-shadow: 2px 2px 3px #161616;
@@ -78,7 +90,9 @@
 
 
 .btn button {
-  margin-top: 60px;
+  z-index: 100;
+top:68%;
+left: 47%;
   font-family: 'Abel';
   width: 9em;
   height: 3em;
@@ -87,9 +101,8 @@
   letter-spacing: 2px;
  font-weight: 700;
   border: none;
-  position: relative;
   overflow: hidden;
-  z-index: 1;
+  position: absolute;
   box-shadow: 6px 6px 12px #c5c5c5,
               -6px -6px 12px #ffffff;
  }

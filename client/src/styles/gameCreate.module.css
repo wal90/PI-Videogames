@@ -1,5 +1,5 @@
 .containerCreate{
-    background-color: #030b17;
+    /* background-color: #030b17; */
     bottom:0;
     position:fixed;
     top:0;
@@ -88,11 +88,11 @@ position:absolute;
 .formulario{
     /* background: linear-gradient(45deg, transparent 5%, #fdde1e 5%);  */
     width: 450px;
-    height: 420px;
+    height: 430px;
     border: 0;
     color: white;
     padding: 50px;
-
+    border-radius: .5rem; 
     z-index: 1000;
    /* position: absolute; */
    position: absolute;
@@ -130,7 +130,7 @@ position:absolute;
       
     }
     .sInput input		{
-   border-bottom: solid 1px #0efee6b0;
+   border-bottom: solid 1px #0efee6bf;
     border-radius: 0px;
     width: 100%;
     font-size: 12px;

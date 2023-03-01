@@ -5,6 +5,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios')
 const { Videogame, Genre} = require('../db')
+const { Op } = require("sequelize")
 const { API_KEY  } = process.env;
 
 const router = Router();
@@ -22,7 +23,10 @@ const router = Router();
             rating: game.rating,
             platforms: game.platforms.map(p=> p.platform.name),
             image: game.background_image,
-            genres: game.genres. map (g=> g.name)
+            // genres: game.genres. map (g=> g.name)
+             genres: game.genres.map(d=>{return {
+               name:d.name
+            }})
         }
         
     })
@@ -47,7 +51,9 @@ const router = Router();
                     rating: game.rating,
                     platforms: game.platforms.map(p=> p.platform.name),
                     image: game.background_image,
-                    genres: game.genres. map (g=> g.name)
+                    genres: game.genres.map(d=>{return {
+                        name:d.name
+                     }})
                 }
             })
             
@@ -79,12 +85,90 @@ const getDbInfo = async ()=>{
     }) 
 }
 
+// const getDbInfo = async (name)=>{
+//     return await Videogame.findAll({
+//         where: {
+//          name : {
+//          [Op.iLike]: "%" + name +"%"
+//             }
+//     },
+//     attributes: ["name"],
+//         include: [
+//          {
+//          model: Genre,
+//             attributes: ["name"],
+//             through: {
+//             attributes: []
+//             }
+//          }
+//         ]       
+//     });
+// };
+
 const getAllVideogames = async () =>{
     const apiInfo = await getAllApiInfo()
     const dbInfo = await getDbInfo()
     const infoTotal = dbInfo.concat(apiInfo)
     return infoTotal
 }
+
+
+const getVidegameByName = async (name) =>{
+    try {
+        const gameName = await axios.get(`https://api.rawg.io/api/games?search=${name}?key=${API_KEY}`)
+        if(gameName){
+            const videogameName = gameName.data.results.filter(data => data.name.toLowerCase().includes(name.toLowerCase()))
+
+            // videogameName = videogameName.slice(0, 15);
+  
+            videogameName = videogameName.map(data => {
+                return {
+                    id: data.id,
+                    name: data.name,
+                    description: data.description,
+                    released: data.released,
+                    rating: data.rating,
+                    image: data.background_image,
+                    platforms: data.platforms?.map(data => data.platform.name),
+                    // genres: data.genres?.map(data => data.name)
+                    genres: data.genres.map(d=>{return {
+                        name:d.name
+                     }})
+                }
+            });
+        }
+    } catch (error) {
+        return ({error : "Videogame not found"}) 
+    }
+}
+
+const getVideogameDb = async (name) =>{
+    try {
+        return await Videogame.findAll({ 
+            where: {
+                name: {
+                    [Op.iLike]: "%" + name + "%"
+                },
+            },
+            include:{
+                model: Genre,
+                attributes: ["name"],
+                through: { attributes: [] }
+            }
+        })
+
+    } catch (error) {
+        return ({error : "Videogame not found"}) 
+    }
+}
+
+const getAllByName = async (name) =>{
+    const apiGame = await getVidegameByName(name)
+    const dbGame = await getVideogameDb(name)
+    const gameTotal = dbGame.concat(apiGame)
+    return gameTotal
+}
+
 
 
 const getVideogameId = async (id) =>{
@@ -99,7 +183,10 @@ const getVideogameId = async (id) =>{
              rating: gameApi.data.rating,
              platforms: gameApi.data.platforms.map(p=> p.platform.name),
              image: gameApi.data.background_image,
-             genres: gameApi.data.genres. map (g=> g.name)
+            genres: gameApi.data.genres. map (g=> g.name)
+            // genres: gameApi.genres.map(d=>{return {
+            //     name:d.name
+            //  }})
          }  
         }
 
@@ -142,5 +229,7 @@ module.exports = {
     getAllVideogames,
     getVideogameId,
     getDbId, 
+    getVideogameDb,
+    getVidegameByName, getAllByName
 
 }

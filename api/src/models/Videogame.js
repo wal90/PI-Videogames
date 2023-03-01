@@ -19,15 +19,16 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     released:{
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
+      defaultValue: DataTypes.NOW
     },
     rating:{
       type: DataTypes.FLOAT,
 
     },
     platforms:{
-      type: DataTypes.ARRAY(DataTypes.JSON),
-      allowNull: false,
+      type: DataTypes.STRING,
+      // allowNull: false,
     }, 
     image:{
       type: DataTypes.STRING,
@@ -37,5 +38,8 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true,
     }
+  },
+  {
+    timestamps: false
   });
 };

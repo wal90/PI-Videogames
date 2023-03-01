@@ -14,14 +14,17 @@ export default function LandingPage(){
             <h1>VIDEOGAMES</h1>
        
 
-            <div className={s.btn}>
+          
+           
+            </div>
+        </div>
+        <div className={s.containTwo}></div>  
+        <div className={s.btn}>
                <Link to='/home'>
                 <button >LET'S GO!</button>
             </Link>  
             </div>
-           
-            </div>
-        </div>
+        
         </div>
     )
 }

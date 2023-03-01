@@ -7,7 +7,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to bottom right, #05153f, #181818);
+  background: linear-gradient(to bottom right,#0a1222, #243b55);
+  /* background: linear-gradient(to bottom right, #05153f, #181818); */
   text-decoration: none;
   object-fit: cover;
   background-attachment: fixed;

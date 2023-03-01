@@ -24,6 +24,30 @@ router.get('/', async (req, res)=>{
     }
 })
 
+// router.get("/", async (req, res) => {
+//     const { name } = req.query;
+//     const allVideogames = await getAllVideogames();
+//     try{
+//         if(name){
+//             const gameApi = await getVidegameByName(name);
+//             if(gameApi.error){
+//                 const gameDb = await getVideogameDb(name);
+//                 if(!gameDb.length){
+//                     return res.status(404).json({message: "Videogame not found"});
+//                 }
+
+//                 return res.status(200).json(gameDb);
+//             }
+//             return res.status(200).json(gameApi);     
+//         }  
+//         return res.status(200).json(allVideogames);
+//     }catch(error){
+//         res.status(400).send({error: error.message});
+//     };
+// });
+
+
+
 
 //obtener por id
 

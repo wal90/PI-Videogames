@@ -12,10 +12,11 @@ export default function Card({ image, name, genres, rating}){
                 <img src={image} alt="" width="100%" height="100%"/>
             </div> 
             <div className={s.text}> 
-                <h3>{name}</h3>
+                <h3>{name[0].toUpperCase() + name.slice(1)}</h3>
                
                    <div>
-                   <p>{genres.map(e => e ).join(", ")}</p> 
+                     <p>{genres.map(e => e.name ).join(", ")}</p>    
+
                 </div>
          
                 

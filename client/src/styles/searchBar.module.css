@@ -1,9 +1,9 @@
 input {
     font-family: 'Abel';
-    width: 15em;
-    background-color: #f4f2f2;
+    width: 25em;
+    background-color: #636363a2;
     border: none;
-    color: #646464;
+    color: #c4c3c3;
     /* padding: 0.7rem 1rem; */
     border-radius: 30px;
     height: 1.8em;
@@ -22,11 +22,11 @@ input {
   
 input:focus {
     outline: none;
-    background-color: #f0eeee;
+    background-color: #b0b0b07e;
   }
   
 input::-webkit-input-placeholder {
     font-weight: 100;
-    color: #ccc;
+    color: rgba(136, 136, 136, 0.504);
     margin-top: 1rem;
   }

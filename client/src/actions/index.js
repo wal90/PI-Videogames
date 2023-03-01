@@ -23,7 +23,7 @@ export function getGenres(){
 
 export function postVideogame(payload){
     return async function (dispatch){
-        const response = await axios.post('http://localhost:3001/videogames', payload);
+        const response = await axios.post('http://localhost:3001/videogame', payload);
         return response
     }
 }
@@ -59,6 +59,13 @@ export function filterCreated(payload){
 export function orderByName(payload){
     return{
         type: 'ORDER_BY_NAME',
+        payload
+    }
+}
+
+export function orderByRating(payload){
+    return{
+        type: 'ORDER_BY_RATING',
         payload
     }
 }

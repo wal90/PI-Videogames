@@ -14,7 +14,7 @@ const router = Router();
 router.post('/', async (req, res)=>{
     const { id, name, released,description, rating, platforms, image, genres,createdInDb} = req.body
 
-  if(!name || !description || !platforms) res.status(400).json({msg : 'Faltan datos'});
+  if(!name || !description ) res.status(400).json({msg : 'Faltan datos'});
   try {
     const gameCreate = await Videogame.create({
        id, name, description,released , rating, platforms, image,createdInDb

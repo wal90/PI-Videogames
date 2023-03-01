@@ -13,7 +13,8 @@ import Loading from "./Loading";
 
 import { filterVideogamesByGenres,
 filterCreated, 
-orderByName
+orderByName, 
+orderByRating
 } from "../actions";
 
 export default function Home (){
@@ -58,16 +59,23 @@ export default function Home (){
         setOrden(`ordenado ${e.target.value}`)
     }
 
+    function handleSortRating(e){
+        e.preventDefault();
+        dispatch(orderByRating(e.target.value))
+        setCurrentPage(1);
+        setOrden(`ordenado ${e.target.value}`)
+    }
+
+
     return (
         <div className={s.containerHome}>
             <div className={s.nav}>
-               <h1>VIDEOGAMES</h1>
-            <Link to ='/videogame'  className={s.link}> Create Videogame</Link>
+               <h1>VIDEOGAMES</h1> 
             <SearchBar/>
             <button onClick={e=>{handleClick(e)}}>
             Reload
             </button>
-           
+           <Link to ='/videogame'  className={s.link}>  Create Videogame </Link>
             </div>
             <div className={s.sel}>
                 <select onChange={e=>handleSort(e)}>
@@ -75,7 +83,7 @@ export default function Home (){
                     <option value ='desc'>Z-A</option>
                 </select>
                 <select onChange={e=>handleFilterGenres(e)}> 
-                    <option value="All">Todos</option>
+                    <option value="All">All Genres</option>
                     <option value="Action">Action</option>
                     <option value="Indie">Indie</option>
                     <option value="Adventure">Adventure</option>
@@ -98,9 +106,14 @@ export default function Home (){
                 </select>
 
                 <select onChange={e=>handleFilterCreate(e)}>
-                    <option value="All">Todos</option>
-                    <option value="Existentes">Existentes</option>
-                    <option value="Creados">Creados</option>
+                    <option value="All">ALL</option>
+                    <option value="Existentes">From api</option>
+                    <option value="Creados">Created</option>
+                </select>
+
+                <select onChange={e=>handleSortRating(e)}>
+                    <option value ='more'>+ RATING</option>
+                    <option value ='less'>- RATING</option>
                 </select>
            
             </div>
@@ -118,7 +131,7 @@ export default function Home (){
                 <div className={s.allCards}>
                     {
                     currentVideogames?.map( (c)=>{
-                        return ( <Fragment>
+                        return ( <Fragment key={c.id}>
                             <Link to={"/videogames/" + c.id}>
                             <Card name={c.name} image={c.image} genres={c.genres} rating={c.rating} key={c.id}/> 
                             </Link>

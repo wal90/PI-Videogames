@@ -10,7 +10,7 @@
 
   .pagination nav ul li{
     display: inline-block;
-    padding: 10px 18px;
+    padding: 10px 15px;
     color: #6ef089;
   }
 
@@ -25,5 +25,5 @@
   }
   
  .pa a:hover{
-    color: #222;
+    color: #00d6c1;
   }

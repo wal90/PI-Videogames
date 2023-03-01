@@ -43,8 +43,10 @@ export default function Detail (props){
 
     <div className={s.dataTwo}>
          <p><strong>· Rating </strong>{myVideogame.rating}</p>
+        { !myVideogame.createdInDb? <div><strong>· Genres </strong>{myVideogame.genres?.map(e => <div key={e}>{e + " "}</div>)}</div> :
+        <div><strong>· Genres </strong>{myVideogame.genres?.map(e => <div key={e}>{e.name + " "}</div>)}</div>}
         
-        <div><strong>· Genres </strong>{myVideogame.genres?.map(e => <div key={e}>{e + " "}</div>)}</div>
+        
     </div>
 
 </div>
