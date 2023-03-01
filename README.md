@@ -1,5 +1,8 @@
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
-![1](https://user-images.githubusercontent.com/71738691/222215404-c542733e-e8ce-4fe4-8ca7-0d3f77399cdb.png)
+![1](https://user-images.githubusercontent.com/71738691/222215963-d37c67e3-c502-4908-b7e7-ad894239d50a.png)
+![2](https://user-images.githubusercontent.com/71738691/222216012-8834a3c5-e100-4895-b860-f7e31d9807d4.png)
+![3](https://user-images.githubusercontent.com/71738691/222216074-4bc52daa-a816-4284-a8bc-71bb63d0e0a2.png)
+![4](https://user-images.githubusercontent.com/71738691/222216104-8307d7e0-7773-4cc1-8afe-634feed12f92.png)
 
 
 # Individual Project - Henry Videogames
